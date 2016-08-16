@@ -23,10 +23,10 @@ class Interview
                 libxml_use_internal_errors(true);
                 $filecheck = simplexml_load_string($myxmlfile);
 
-                if (!$myxmlfile) {
-                    $error_msg = "Error loading XML.\n<br />\n";
+                if ( ! $filecheck) {
+                    $error_msg = "Error loading XML.\n";
                     foreach (libxml_get_errors() as $error) {
-                        $error_msg .= "\t" . $error->message;
+                        $error_msg .= "\t" . $error->message . "\n";
                     }
                     throw new Exception($error_msg);
                 }

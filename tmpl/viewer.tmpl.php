@@ -11,7 +11,8 @@
 		<link rel="stylesheet" href="css/jquery-ui.toggleSwitch.css" type="text/css" />
 		<link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css" type="text/css" />
 		<link rel="stylesheet" href="css/font-awesome.css">
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery-migrate-1.4.1.min.js"></script>
 		<script type="text/javascript" src="js/jquery-ui.toggleSwitch.js"></script>
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>

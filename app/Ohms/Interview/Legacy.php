@@ -19,6 +19,7 @@ class Legacy
     private function __construct($viewerconfig, $tmpDir, $cachefile)
     {
         if ($cachefile) {
+            error_log(print_r(array('t' => $tmpDir, 'c' => $cachefile), true));
             if ($myfile = file_get_contents("{$tmpDir}/$cachefile")) {
 
                 libxml_use_internal_errors(true);
@@ -123,7 +124,7 @@ class Legacy
     public static function getInstance($viewerconfig, $tmpDir, $cachefile = null)
     {
         if (!self::$Instance) {
-            self::$Instance = new Legacy($cachefile, $tmpDir, $viewerconfig);
+            self::$Instance = new Legacy($viewerconfig, $tmpDir, $cachefile);
         }
         return self::$Instance;
     }
