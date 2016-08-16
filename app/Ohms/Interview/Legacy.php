@@ -8,6 +8,8 @@
  * @license http://www.uky.edu
  */
 
+use Exception;
+
 class Legacy
 {
     private static $Instance = null;

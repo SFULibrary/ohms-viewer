@@ -10,6 +10,8 @@
 
 use Ohms\Transcript;
 
+use Exception;
+
 class Version3
 {
     private static $Instance = null;
