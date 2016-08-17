@@ -14,7 +14,7 @@ use Ohms\Interview\Version3;
 
 class Interview
 {
-    public static function getInstance($config, $configtmpDir, $cachefile = null)
+    public static function getInstance($config, $configtmpDir, $cachefile = null, $xmlcontent = null)
     {
         $viewerconfig = $config;
         $tmpDir = $configtmpDir;
@@ -22,7 +22,6 @@ class Interview
             if ($myxmlfile = file_get_contents("{$tmpDir}/$cachefile")) {
                 libxml_use_internal_errors(true);
                 $filecheck = simplexml_load_string($myxmlfile);
-
                 if ( ! $filecheck) {
                     $error_msg = "Error loading XML.\n";
                     foreach (libxml_get_errors() as $error) {
@@ -32,6 +31,16 @@ class Interview
                 }
             } else {
                 throw new Exception("Invalid CacheFile.");
+            }        
+        } elseif($xmlcontent) {
+            libxml_use_internal_errors(true);
+            $filecheck = simplexml_load_string($xmlcontent);                
+            if( ! $filecheck) {
+                $error_msg = "Error loading XML.\n<br />\n";
+                foreach (libxml_get_errors() as $error) {
+                    $error_msg .= "\t" . $error->message;
+                }
+                throw new Exception($error_msg);
             }
         } else {
             throw new Exception("Initialization requires valid CacheFile.");
@@ -39,9 +48,9 @@ class Interview
 
         $cacheversion = (string)$filecheck->record->version;
         if ($cacheversion=='') {
-            return Legacy::getInstance($viewerconfig, $tmpDir, $cachefile);
+            return Legacy::getInstance($viewerconfig, $tmpDir, $cachefile, $xmlcontent);
         } else {
-            return Version3::getInstance($viewerconfig, $tmpDir, $cachefile);
+            return Version3::getInstance($viewerconfig, $tmpDir, $cachefile, $xmlcontent);
         }
     }
 }

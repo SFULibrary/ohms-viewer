@@ -1,5 +1,6 @@
 <?php namespace Ohms;
 
+use Exception;
 use Ohms\Interview;
 
 class ViewerController
@@ -8,10 +9,14 @@ class ViewerController
     private $interviewName;
     private $tmpDir;
     private $config;
-    public function __construct($interviewName)
+    public function __construct($interviewName, $xmlcontent = null, $config = null)
     {
-        $this->config = parse_ini_file("config/config.ini", true);
-        $this->interview = Interview::getInstance($this->config, $this->config['tmpDir'], $interviewName);
+        if($config === null) {
+            $this->config = parse_ini_file("config/config.ini", true);        
+        } else {
+            $this->config = $config;
+        }
+        $this->interview = Interview::getInstance($this->config, $this->config['tmpDir'], $interviewName, $xmlcontent);
         $this->interviewName = $interviewName;
     }
 
@@ -45,8 +50,9 @@ class ViewerController
                 $interview = $this->interview;
                 $interviewName = $this->interviewName;
                 $config = $this->config;
-				if(file_exists('tmpl/' . $tmpl . '.tmpl.php')) {
-					include_once('tmpl/' . $tmpl . '.tmpl.php');
+                $fileName = dirname(dirname(dirname(__FILE__))) . '/tmpl/' . $tmpl . '.tmpl.php';
+				if(file_exists($fileName)) {
+					include_once($fileName);
 				} else {
 					throw new Exception("Cannot display template {$tmpl} - not found.");
 				}

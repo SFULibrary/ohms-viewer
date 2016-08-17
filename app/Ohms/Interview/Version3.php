@@ -19,7 +19,7 @@ class Version3
     private $data;
     private $xml = null;
 
-    private function __construct($viewerconfig, $tmpDir, $cachefile)
+    private function __construct($viewerconfig, $tmpDir, $cachefile, $xmlcontent = null)
     {
         if ($cachefile) {
             $this->xml = file_get_contents("{$tmpDir}/$cachefile");
@@ -37,6 +37,11 @@ class Version3
             } else {
                 throw new Exception("Invalid Version3CacheFile.");
             }
+        }
+        else if($xmlcontent) {
+            $this->xml = $xmlcontent;
+            libxml_use_internal_errors(true);
+            $ohfile = simplexml_load_string($this->xml);
         } else {
             throw new Exception("Initialization requires valid Version3CacheFile.");
         }
@@ -82,7 +87,8 @@ class Version3
         $this->data['player_id'] =    (string)$ohfile->record->mediafile->host_player_id;
         $this->data['clip_id'] =    (string)$ohfile->record->mediafile->host_clip_id;
         $this->data['clip_format'] =    (string)$ohfile->record->mediafile->clip_format;
-        $translate = $_GET['translate'];
+		// @todo dependency injection for $translate
+        $translate = 0; //$_GET['translate'];
         if ($translate == '1') {
             $this->data['chunks'] = (string)$ohfile->record->sync_alt;
             $transcript = $ohfile->record->transcript_alt;
@@ -162,10 +168,10 @@ class Version3
         return array_keys($this->data);
     }
 
-    public static function getInstance($viewerconfig, $tmpDir, $cachefile = null)
+    public static function getInstance($viewerconfig, $tmpDir, $cachefile = null, $xmlcontent = null)
     {
         if (!self::$Instance) {
-            self::$Instance = new Version3($viewerconfig, $tmpDir, $cachefile);
+            self::$Instance = new Version3($viewerconfig, $tmpDir, $cachefile, $xmlcontent);
         }
         return self::$Instance;
     }
