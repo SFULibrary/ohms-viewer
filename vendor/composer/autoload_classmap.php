@@ -6,9 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Ohms\\Interview' => $baseDir . '/app/Ohms/Interview.php',
-    'Ohms\\Interview\\Legacy' => $baseDir . '/app/Ohms/Interview/Legacy.php',
-    'Ohms\\Interview\\Version3' => $baseDir . '/app/Ohms/Interview/Version3.php',
-    'Ohms\\Transcript' => $baseDir . '/app/Ohms/Transcript.php',
-    'Ohms\\ViewerController' => $baseDir . '/app/Ohms/ViewerController.php',
 );

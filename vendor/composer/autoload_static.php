@@ -20,20 +20,11 @@ class ComposerStaticInit9387792ad7c03b8c2bde1beda1e24982
         ),
     );
 
-    public static $classMap = array (
-        'Ohms\\Interview' => __DIR__ . '/../..' . '/app/Ohms/Interview.php',
-        'Ohms\\Interview\\Legacy' => __DIR__ . '/../..' . '/app/Ohms/Interview/Legacy.php',
-        'Ohms\\Interview\\Version3' => __DIR__ . '/../..' . '/app/Ohms/Interview/Version3.php',
-        'Ohms\\Transcript' => __DIR__ . '/../..' . '/app/Ohms/Transcript.php',
-        'Ohms\\ViewerController' => __DIR__ . '/../..' . '/app/Ohms/ViewerController.php',
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit9387792ad7c03b8c2bde1beda1e24982::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit9387792ad7c03b8c2bde1beda1e24982::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit9387792ad7c03b8c2bde1beda1e24982::$classMap;
 
         }, null, ClassLoader::class);
     }
