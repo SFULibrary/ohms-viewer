@@ -31,7 +31,6 @@
 <div id="main">
 	<div id="main-panels">
 		<div id="content-panel">
-			<div id="holder-panel"></div>
 			<div id="transcript-panel" class="transcript-panel">
 				<?php echo $interview->transcript; ?>
 			</div>
@@ -39,6 +38,8 @@
 				<?php echo $interview->index; ?>
 			</div>
 		</div>
-		<div id="searchbox-panel"><?php include_once dirname(dirname(__FILE__)) . '/search.tmpl.php'; ?></div>
+		<div id="searchbox-panel">
+			<?php include_once dirname(dirname(__FILE__)) . '/search.tmpl.php'; ?>
+		</div>
 	</div>
 </div>

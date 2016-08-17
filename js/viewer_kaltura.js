@@ -7,12 +7,16 @@ jQuery(function ($) {
       $('#search-legend').html('Search this Transcript');
       $('#submit-btn').off('click').on('click', getSearchResults);
       $('#kw').off('keypress').on('keypress', getSearchResults);
-      $('#index-panel').fadeOut();
+      $('#index-panel').fadeOut(function(){
+		  $('#transcript-panel').fadeIn();
+	  });
     } else if (searchType == 'Index') {
       $('#search-legend').html('Search this Index');
       $('#submit-btn').off('click').on('click', getIndexResults);
       $('#kw').off('keypress').on('keypress', getIndexResults);
-      $('#index-panel').fadeIn();
+	  $('#transcript-panel').fadeOut(function(){
+		  $('#index-panel').fadeIn();
+	  });
     }
   }
 
