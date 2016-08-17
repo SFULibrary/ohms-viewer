@@ -23,7 +23,7 @@
 			</div>
 		</h2>
 		<div id="audio-panel">
-			<?php include_once 'tmpl/player_' . $interview->playername . '.tmpl.php'; ?>
+			<?php include_once dirname(dirname(__FILE__)) . '/player_' . $interview->playername . '.tmpl.php'; ?>
 		</div>
 	</div>			
 </div>
@@ -39,6 +39,6 @@
 				<?php echo $interview->index; ?>
 			</div>
 		</div>
-		<div id="searchbox-panel"><?php include_once 'tmpl/search.tmpl.php'; ?></div>
+		<div id="searchbox-panel"><?php include_once dirname(dirname(__FILE__)) . '/search.tmpl.php'; ?></div>
 	</div>
 </div>
