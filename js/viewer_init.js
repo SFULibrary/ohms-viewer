@@ -64,8 +64,8 @@ jQuery(document).ready(function() {
 		});
 	}
 
-	$(".fancybox").fancybox();
-	$(".various").fancybox({
+	jQuery(".fancybox").fancybox();
+	jQuery(".various").fancybox({
 		maxWidth    : 800,
 		maxHeight   : 600,
 		fitToView   : false,
@@ -76,7 +76,7 @@ jQuery(document).ready(function() {
 		openEffect  : 'none',
 		closeEffect : 'none'
 	});
-	$('.fancybox-media').fancybox({
+	jQuery('.fancybox-media').fancybox({
 		openEffect  : 'none',
 		closeEffect : 'none',
 		width       : '80%',
@@ -86,7 +86,7 @@ jQuery(document).ready(function() {
 			media : {}
 		}
 	});
-	$(".fancybox-button").fancybox({
+	jQuery(".fancybox-button").fancybox({
 		prevEffect : 'none',
 		nextEffect : 'none',
 		closeBtn   : false,

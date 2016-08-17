@@ -1,5 +1,6 @@
 jQuery.fn.toggleSwitch = function (params) {
-
+	var $ = jQuery;
+	
     var defaults = {
         highlight: true,
         width: 25,
