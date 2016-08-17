@@ -9,6 +9,7 @@ class ViewerController
     private $interviewName;
     private $tmpDir;
     private $config;
+	
     public function __construct($interviewName, $xmlcontent = null, $config = null)
     {
         if($config === null) {
