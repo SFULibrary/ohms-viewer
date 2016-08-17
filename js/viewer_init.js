@@ -6,7 +6,7 @@ if (location.href.search('#segment') > -1) {
 	}
 }
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
 
 	jQuery('a.indexSegmentLink').click(function (e) {
 		e.preventDefault();
