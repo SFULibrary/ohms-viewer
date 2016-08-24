@@ -24,15 +24,19 @@ var prevIndex = {
   matches: []
 };
 
+if(null == searchUrl) {
+	searchUrl = 'viewer.php';
+}
+
 var clearSearchResults = function (e) {
   if ((e.type == "keypress" && e.which == 13) || e.type == "click") {
     e.preventDefault();
-    $('#search-results').empty();
-    $('#kw').val('');
-    $('span.highlight').removeClass('highlight');
-    $("#kw").prop('disabled', false);
-    $("#submit-btn").css("display", "inline-block");
-    $("#clear-btn").css("display", "none");
+    jQuery('#search-results').empty();
+    jQuery('#kw').val('');
+    jQuery('span.highlight').removeClass('highlight');
+    jQuery("#kw").prop('disabled', false);
+    jQuery("#submit-btn").css("display", "inline-block");
+    jQuery("#clear-btn").css("display", "none");
   }
 };
 

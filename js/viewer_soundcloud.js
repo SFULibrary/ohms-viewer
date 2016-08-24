@@ -7,12 +7,16 @@ jQuery(function ($) {
       $('#search-legend').html('Search this Transcript');
       $('#submit-btn').off('click').on('click', getSearchResults);
       $('#kw').off('keypress').on('keypress', getSearchResults);
-      $('#index-panel').fadeOut();
+      $('#index-panel').fadeOut(function(){
+		  $('#transcript-panel').fadeIn();
+	  });
     } else if (searchType == 'Index') {
       $('#search-legend').html('Search this Index');
       $('#submit-btn').off('click').on('click', getIndexResults);
       $('#kw').off('keypress').on('keypress', getIndexResults);
-      $('#index-panel').fadeIn();
+	  $('#transcript-panel').fadeOut(function(){
+		  $('#index-panel').fadeIn();
+	  });
     }
   }
 
@@ -83,7 +87,7 @@ jQuery(function ($) {
         if (parent.document.URL.search('translate=1') != -1) {
           isTranslate = true;
         }
-        $.getJSON('viewer.php?action=search&cachefile=' + cachefile + '&kw=' + kw + (isTranslate ? '&translate=1' : ''), function (data) {
+        $.getJSON(searchUrl + '?action=search&cachefile=' + cachefile + '&kw=' + kw + (isTranslate ? '&translate=1' : ''), function (data) {
           var matches = [];
           $('#search-results').empty();
           if (data.matches.length === 0) {
@@ -143,7 +147,7 @@ jQuery(function ($) {
         if (parent.document.URL.search('translate=1') != -1) {
           isTranslate = true;
         }
-        $.getJSON('viewer.php?action=index&cachefile=' + cachefile + '&kw=' + kw + (isTranslate ? '&translate=1' : ''), function (data) {
+        $.getJSON(searchUrl + '?action=index&cachefile=' + cachefile + '&kw=' + kw + (isTranslate ? '&translate=1' : ''), function (data) {
           var matches = [];
           $('#search-results').empty();
           if (data.matches.length === 0) {
