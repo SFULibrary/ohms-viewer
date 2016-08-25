@@ -24,7 +24,7 @@ var prevIndex = {
   matches: []
 };
 
-if(null == searchUrl) {
+if(typeof searchUrl == 'undefined') {
 	searchUrl = 'viewer.php';
 }
 
