@@ -1,8 +1,9 @@
 <?php $class = in_array(substr(strtolower($filepath), -4, 4), $audioFormats) ? "header" : "headervid"; ?>
-<div id="ohms-<?php echo $class; ?>" class="center">				
+<div id="<?php echo $class; ?>">				
 	<?php if (isset($config[$interview->repository])): ?>
-		<img id="ohms-headerimg" src="<?php echo $config[$interview->repository]['footerimg']; ?>" alt="<?php echo $config[$interview->repository]['footerimgalt']; ?>" />
+		<img id="headerimg" src="<?php echo $config[$interview->repository]['footerimg']; ?>" alt="<?php echo $config[$interview->repository]['footerimgalt']; ?>" />
 	<?php endif; ?>
+	<div class="center">
 		<h1><?php echo $interview->title; ?></h1>
 		<h2 id="secondaryMetaData">
 			<div>
@@ -25,8 +26,9 @@
 			<?php include_once dirname(dirname(__FILE__)) . '/player_' . $interview->playername . '.tmpl.php'; ?>
 		</div>
 	</div>			
+</div>
 
-<div id="ohms-main" class="center">
+<div id="main">
 	<div id="main-panels">
 		<div id="content-panel">
 			<div id="transcript-panel" class="transcript-panel">
